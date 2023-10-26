@@ -1,0 +1,17 @@
+C:\Users\Erlantz\Desktop\Reto\AADD\AADDApp\AADDApp\bin\Debug\AADDApp.exe.config
+C:\Users\Erlantz\Desktop\Reto\AADD\AADDApp\AADDApp\bin\Debug\AADDApp.exe
+C:\Users\Erlantz\Desktop\Reto\AADD\AADDApp\AADDApp\bin\Debug\AADDApp.pdb
+C:\Users\Erlantz\Desktop\Reto\AADD\AADDApp\AADDApp\bin\Debug\AADDApp.xml
+C:\Users\Erlantz\Desktop\Reto\AADD\AADDApp\AADDApp\obj\Debug\AADDApp.vbproj.AssemblyReference.cache
+C:\Users\Erlantz\Desktop\Reto\AADD\AADDApp\AADDApp\obj\Debug\AADDApp.Resources.resources
+C:\Users\Erlantz\Desktop\Reto\AADD\AADDApp\AADDApp\obj\Debug\AADDApp.vbproj.GenerateResource.cache
+C:\Users\Erlantz\Desktop\Reto\AADD\AADDApp\AADDApp\obj\Debug\AADDApp.vbproj.CoreCompileInputs.cache
+C:\Users\Erlantz\Desktop\Reto\AADD\AADDApp\AADDApp\obj\Debug\AADDApp.exe
+C:\Users\Erlantz\Desktop\Reto\AADD\AADDApp\AADDApp\obj\Debug\AADDApp.xml
+C:\Users\Erlantz\Desktop\Reto\AADD\AADDApp\AADDApp\obj\Debug\AADDApp.pdb
+C:\Users\Erlantz\Desktop\Reto\AADD\AADDApp\AADDApp\obj\Debug\AADDApp.AdministradorMenu.resources
+C:\Users\Erlantz\Desktop\Reto\AADD\AADDApp\AADDApp\obj\Debug\AADDApp.AdministrarEmpleados.resources
+C:\Users\Erlantz\Desktop\Reto\AADD\AADDApp\AADDApp\obj\Debug\AADDApp.Login.resources
+C:\Users\Erlantz\Desktop\Reto\AADD\AADDApp\AADDApp\obj\Debug\AADDApp.AdministrarStock.resources
+C:\Users\Erlantz\Desktop\Reto\AADD\AADDApp\AADDApp\obj\Debug\AADDApp.AppComandaMenu.resources
+C:\Users\Erlantz\Desktop\Reto\AADD\AADDApp\AADDApp\obj\Debug\AADDApp.AppGridElementos.resources
