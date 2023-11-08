@@ -6,7 +6,7 @@ Public Class Login
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Cadena de conexión
-        Dim connectionString As String = "Data Source=sql518.sql.dinaserver.com;Initial Catalog=Reto1;User ID=AdminG2;Password=Reto01Ayuda-"
+        Dim connectionString As String = "Data Source=sql518.sql.dinaserver.com,1433;Initial Catalog=Reto1G2;User ID=AdminGR2;Password=Reto01Ayuda-"
 
         ' Intenta establecer la conexión
         Try
@@ -65,16 +65,20 @@ Public Class Login
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If EjecutarConsulta("select contraseña from empleados where DNI = " + TextBox1.Text, "SELECT", True).First().Equals(TextBox2.Text) Then
+        Console.WriteLine(EjecutarConsulta("select CONTRASEÑA from Empleados where DNI = " + TextBox1.Text, "SELECT").First())
+        If EjecutarConsulta("select CONTRASEÑA from Empleados where DNI = " + TextBox1.Text, "SELECT").First().Equals(TextBox2.Text) Then
             ' Load App
             Console.WriteLine("Ususario Existe")
-            If EjecutarConsulta("select puesto from empleados where DNI = " + TextBox1.Text, "SELECT").First().Equals("Gerente") Then
+            If EjecutarConsulta("select PUESTO from Empleados where DNI = " + TextBox1.Text, "SELECT").First().Equals("Gerente") Then
                 AdministradorMenu.DNI = TextBox1.Text
                 TextBox1.Text = ""
                 TextBox2.Text = ""
                 AdministradorMenu.Show()
             Else
-                ' Show()
+                AdministradorMenu.DNI = TextBox1.Text
+                TextBox1.Text = ""
+                TextBox2.Text = ""
+                AppComandaMenu.Show()
             End If
         Else
             Console.WriteLine("Ususario NO Existe")

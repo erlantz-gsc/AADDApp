@@ -103,6 +103,19 @@
     <Compile Include="AppGridElementos.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="AppMenuDia.Designer.vb">
+      <DependentUpon>AppMenuDia.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AppMenuDia.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AppMenuTerminar.Designer.vb">
+      <DependentUpon>AppMenuTerminar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AppMenuTerminar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Articulo.vb" />
     <Compile Include="Login.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +154,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AppGridElementos.resx">
       <DependentUpon>AppGridElementos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppMenuDia.resx">
+      <DependentUpon>AppMenuDia.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppMenuTerminar.resx">
+      <DependentUpon>AppMenuTerminar.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.vb</DependentUpon>

@@ -15,3 +15,5 @@ C:\Users\Erlantz\Desktop\Reto\AADD\AADDApp\AADDApp\obj\Debug\AADDApp.Login.resou
 C:\Users\Erlantz\Desktop\Reto\AADD\AADDApp\AADDApp\obj\Debug\AADDApp.AdministrarStock.resources
 C:\Users\Erlantz\Desktop\Reto\AADD\AADDApp\AADDApp\obj\Debug\AADDApp.AppComandaMenu.resources
 C:\Users\Erlantz\Desktop\Reto\AADD\AADDApp\AADDApp\obj\Debug\AADDApp.AppGridElementos.resources
+C:\Users\Erlantz\Desktop\Reto\AADD\AADDApp\AADDApp\obj\Debug\AADDApp.AppMenuDia.resources
+C:\Users\Erlantz\Desktop\Reto\AADD\AADDApp\AADDApp\obj\Debug\AADDApp.AppMenuTerminar.resources

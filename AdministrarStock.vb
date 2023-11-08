@@ -8,7 +8,7 @@ Public Class AdministrarStock
         LoadTable()
     End Sub
     Private Sub LoadTable()
-        Dim sql As String = "SELECT COD_ARTICULO, STOCK, PRECIO FROM Articulos"
+        Dim sql As String = "SELECT COD_ARTICULO, NOMBRE, TIPO, STOCK, PRECIO FROM Articulos"
 
         ' Crea un nuevo comando SQL y adapta los resultados.
         Dim command As SqlCommand = New SqlCommand(sql, Login.connection)
