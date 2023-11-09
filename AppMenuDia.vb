@@ -8,9 +8,28 @@
         Dim groupBox3Selected As String = GetSelectedRadioButtonText(GroupBox3)
 
         If groupBox1Selected IsNot Nothing AndAlso groupBox2Selected IsNot Nothing AndAlso groupBox3Selected IsNot Nothing Then
-            MessageBox.Show("Seleccionado en GroupBox1: " & groupBox1Selected & vbCrLf &
-                        "Seleccionado en GroupBox2: " & groupBox2Selected & vbCrLf &
-                        "Seleccionado en GroupBox3: " & groupBox3Selected)
+            Dim notas As String = "Menu: " & vbCrLf &
+                            "Primer plato - " & groupBox1Selected & vbCrLf &
+                            "Segundo plato - " & groupBox2Selected & vbCrLf &
+                            "Postre - " & groupBox3Selected & vbCrLf
+            AppComandaMenu.notas += notas
+
+            Dim articuloExistente As Articulo = AppComandaMenu.articulos.Find(Function(a) a.Nombre = "Menu")
+
+            If articuloExistente IsNot Nothing Then
+                ' Actualiza la cantidad en la lista con el valor del DataGridView
+                articuloExistente.Stock += 1
+            Else
+                Dim nuevoArticulo As New Articulo()
+                nuevoArticulo.Codigo = 0
+                nuevoArticulo.Nombre = "Menu"
+                nuevoArticulo.Stock = 1
+                nuevoArticulo.Tipo = "Menu"
+                nuevoArticulo.Precio = 20
+                AppComandaMenu.articulos.Add(nuevoArticulo)
+            End If
+
+            Me.Close()
         Else
             MessageBox.Show("Alguno de los GroupBox no tiene un RadioButton seleccionado.")
         End If
@@ -24,4 +43,8 @@
         Next
         Return Nothing
     End Function
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Me.Close()
+    End Sub
 End Class

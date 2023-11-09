@@ -3,6 +3,7 @@
 Public Class Login
     ' Define una variable para la conexión a la base de datos
     Public connection As SqlConnection
+    Public DNI As String
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Cadena de conexión
@@ -39,7 +40,7 @@ Public Class Login
                         Next
                     Else
                         ' Agrega el campo especificado a la lista
-                        results.Add(reader.GetString(0)) ' Ajusta esto según el campo que necesitas
+                        results.Add(reader.GetValue(0).ToString()) ' Ajusta esto según el campo que necesitas
                     End If
                 End While
                 reader.Close()
@@ -65,9 +66,9 @@ Public Class Login
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Console.WriteLine(EjecutarConsulta("select CONTRASEÑA from Empleados where DNI = " + TextBox1.Text, "SELECT").First())
         If EjecutarConsulta("select CONTRASEÑA from Empleados where DNI = " + TextBox1.Text, "SELECT").First().Equals(TextBox2.Text) Then
             ' Load App
+            DNI = TextBox1.Text
             Console.WriteLine("Ususario Existe")
             If EjecutarConsulta("select PUESTO from Empleados where DNI = " + TextBox1.Text, "SELECT").First().Equals("Gerente") Then
                 AdministradorMenu.DNI = TextBox1.Text
