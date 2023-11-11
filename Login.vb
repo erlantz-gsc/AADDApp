@@ -6,6 +6,8 @@ Public Class Login
     Public DNI As String
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        TextBox1.Text = "555555555"
+        TextBox2.Text = "clave789"
         ' Cadena de conexión
         Dim connectionString As String = "Data Source=sql518.sql.dinaserver.com,1433;Initial Catalog=Reto1G2;User ID=AdminGR2;Password=Reto01Ayuda-"
 
@@ -84,5 +86,17 @@ Public Class Login
         Else
             Console.WriteLine("Ususario NO Existe")
         End If
+    End Sub
+
+    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles TextBox2.TextChanged
+
+    End Sub
+
+    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+
+    End Sub
+
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
+
     End Sub
 End Class

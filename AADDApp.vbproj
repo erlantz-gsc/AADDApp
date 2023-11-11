@@ -161,6 +161,9 @@
     <EmbeddedResource Include="AppMenuTerminar.resx">
       <DependentUpon>AppMenuTerminar.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Login.aa.resx">
+      <DependentUpon>Login.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.vb</DependentUpon>
     </EmbeddedResource>

@@ -23,6 +23,11 @@ Public Class AppGridElementos
         For Each row As DataRow In dataTable.Rows
             ' Crea un nuevo botón
             Dim btn As New Button()
+            btn.BackColor = Color.FromArgb(39, 113, 185)
+            btn.ForeColor = Color.White
+            btn.Size = New Size(103, 67)
+            btn.Font = New Font("Microsoft Sans Serif", 12, FontStyle.Regular)
+
             btn.Text = row("NOMBRE").ToString()
             btn.Tag = row ' Almacena la fila de datos en el Tag del botón
             AddHandler btn.Click, AddressOf BotonArticulo_Click ' Asocia un controlador de eventos al botón
@@ -60,9 +65,9 @@ Public Class AppGridElementos
             articuloExistente.Cells("Cantidad").Value = cantidad
 
             Dim precio As Decimal = Convert.ToDecimal(dataRow("PRECIO"))
-            Dim totalPrecio As Decimal = Convert.ToDecimal(Label1.Text.Replace("Total Precio: ", "").Replace("€", ""))
+            Dim totalPrecio As Decimal = Convert.ToDecimal(Label1.Text.Replace("TOTAL PRECIO: ", "").Replace("€", ""))
             totalPrecio += precio
-            Label1.Text = "Total Precio: " & totalPrecio.ToString("C") ' Formatea el total como moneda
+            Label1.Text = "TOTAL PRECIO: " & totalPrecio.ToString("C") ' Formatea el total como moneda
         Else
             ' Si el artículo no existe, agrega una nueva fila con cantidad 1
             DataGridView1.Rows.Add(dataRow("COD_ARTICULO"), dataRow("NOMBRE"), 1, dataRow("PRECIO"))
@@ -76,7 +81,7 @@ Public Class AppGridElementos
             Next
 
             ' Muestra el total en Label1
-            Label1.Text = "Total Precio: " & totalPrecio.ToString("C") ' Formatea el total como moneda
+            Label1.Text = "TOTAL PRECIO: " & totalPrecio.ToString("C") ' Formatea el total como moneda
         End If
     End Sub
 
@@ -138,4 +143,6 @@ Public Class AppGridElementos
         ' Cierra el formulario AppGridElementos
         Me.Close()
     End Sub
+
+
 End Class
