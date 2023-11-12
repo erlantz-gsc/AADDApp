@@ -31,7 +31,7 @@ Public Class AdministrarEmpleados
 
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
         If e.RowIndex >= 0 And e.ColumnIndex >= 0 Then
-            ' Obten el valor de la celda en la columna "DNI" (o la columna que corresponda).
+            ' Obtén el valor de la celda en la columna "DNI" (o la columna que corresponda).
             DNI = DataGridView1.Rows(e.RowIndex).Cells("DNI").Value.ToString()
             DNIText.Visible = False
             DniLabel.Visible = False
@@ -39,17 +39,23 @@ Public Class AdministrarEmpleados
             ContraseñaLabel.Visible = False
             DespedirButton.Visible = True
             AgregarButton.Text = "Modificar"
-            Dim resultados As List(Of String) = Login.EjecutarConsulta("select * from empleados where DNI = '" & DNI & "'", "SELECT", True)
 
-            If resultados.Count > 0 Then
-                ' Suponiendo que los datos se encuentran en un orden específico en la lista (por ejemplo, DNI, Contraseña, Puesto, Nombre, Apellidos, Antigüedad y Número de Seguridad Social):
-                DNIText.Text = resultados(0)
-                ContraseñaText.Text = resultados(6)
-                PuestoCombo.SelectedText = resultados(1)
-                NombreText.Text = resultados(2)
-                ApellidosText.Text = resultados(3)
-                AntiguedadText.Text = resultados(4)
-                NSeguridadSocialText.Text = resultados(5)
+            ' Obtén la fila correspondiente en el DataTable.
+            Dim row As DataRow = DirectCast(DataGridView1.Rows(e.RowIndex).DataBoundItem, DataRowView).Row
+
+            If row IsNot Nothing Then
+                ' Utiliza los datos de la fila para llenar los campos.
+                DNIText.Text = row("DNI").ToString()
+                ContraseñaText.Text = row("CONTRASEÑA").ToString()
+                If row("Puesto").ToString() = "Camarero" Then
+                    PuestoCombo.SelectedIndex = 0
+                ElseIf row("Puesto").ToString() = "Gerente" Then
+                    PuestoCombo.SelectedIndex = 1
+                End If
+                NombreText.Text = row("NOMBRE").ToString()
+                ApellidosText.Text = row("APELLIDOS").ToString()
+                AntiguedadText.Text = row("ANTIGUEDAD").ToString()
+                NSeguridadSocialText.Text = row("N_SEGURIDAD_SOCIAL").ToString()
             End If
         End If
     End Sub
@@ -91,7 +97,7 @@ Public Class AdministrarEmpleados
         AgregarButton.Text = "Añadir"
         DNIText.Text = ""
         ContraseñaText.Text = ""
-        PuestoCombo.SelectedValue = 0
+        PuestoCombo.SelectedIndex = 0
         NombreText.Text = ""
         ApellidosText.Text = ""
         AntiguedadText.Text = ""
