@@ -24,6 +24,9 @@ Public Class AdministrarEmpleados
         Catch ex As Exception
             MessageBox.Show("Error al recuperar los datos: " & ex.Message)
         End Try
+        Dim puestoColumn As DataColumn = dataTable.Columns("Puesto")
+        Dim uniquePuestos As List(Of String) = dataTable.AsEnumerable().Select(Function(row) row.Field(Of String)(puestoColumn)).Distinct().ToList()
+        PuestoCombo.DataSource = uniquePuestos
     End Sub
 
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
@@ -42,7 +45,7 @@ Public Class AdministrarEmpleados
                 ' Suponiendo que los datos se encuentran en un orden específico en la lista (por ejemplo, DNI, Contraseña, Puesto, Nombre, Apellidos, Antigüedad y Número de Seguridad Social):
                 DNIText.Text = resultados(0)
                 ContraseñaText.Text = resultados(6)
-                PuestoText.Text = resultados(1)
+                PuestoCombo.SelectedText = resultados(1)
                 NombreText.Text = resultados(2)
                 ApellidosText.Text = resultados(3)
                 AntiguedadText.Text = resultados(4)
@@ -54,11 +57,11 @@ Public Class AdministrarEmpleados
     Private Sub AgregarButton_Click(sender As Object, e As EventArgs) Handles AgregarButton.Click
         If String.IsNullOrWhiteSpace(DNI) Then
             ' DNI está vacío, realiza una inserción
-            Dim sqlInsert As String = "INSERT INTO empleados (DNI, PUESTO, NOMBRE, APELLIDOS, ANTIGUEDAD, N_SEGURIDAD_SOCIAL, CONTRASEÑA) VALUES ('" & DNIText.Text & "', '" & PuestoText.Text & "', '" & NombreText.Text & "', '" & ApellidosText.Text & "', '" & AntiguedadText.Text & "', '" & NSeguridadSocialText.Text & "', '" & ContraseñaText.Text & "')"
+            Dim sqlInsert As String = "INSERT INTO empleados (DNI, PUESTO, NOMBRE, APELLIDOS, ANTIGUEDAD, N_SEGURIDAD_SOCIAL, CONTRASEÑA) VALUES ('" & DNIText.Text & "', '" & PuestoCombo.SelectedText & "', '" & NombreText.Text & "', '" & ApellidosText.Text & "', '" & AntiguedadText.Text & "', '" & NSeguridadSocialText.Text & "', '" & ContraseñaText.Text & "')"
             Login.EjecutarConsulta(sqlInsert, "INSERT")
         Else
             ' DNI no está vacío, realiza una actualización
-            Dim sqlUpdate As String = "UPDATE empleados SET DNI = '" & DNIText.Text & "', PUESTO = '" & PuestoText.Text & "', NOMBRE = '" & NombreText.Text & "', APELLIDOS = '" & ApellidosText.Text & "', ANTIGUEDAD = '" & AntiguedadText.Text & "', N_SEGURIDAD_SOCIAL = '" & NSeguridadSocialText.Text & "', CONTRASEÑA = '" & ContraseñaText.Text & "' WHERE DNI = '" & DNI & "'"
+            Dim sqlUpdate As String = "UPDATE empleados SET DNI = '" & DNIText.Text & "', PUESTO = '" & PuestoCombo.SelectedText & "', NOMBRE = '" & NombreText.Text & "', APELLIDOS = '" & ApellidosText.Text & "', ANTIGUEDAD = '" & AntiguedadText.Text & "', N_SEGURIDAD_SOCIAL = '" & NSeguridadSocialText.Text & "', CONTRASEÑA = '" & ContraseñaText.Text & "' WHERE DNI = '" & DNI & "'"
             Login.EjecutarConsulta(sqlUpdate, "UPDATE")
         End If
         Reset()
@@ -88,7 +91,7 @@ Public Class AdministrarEmpleados
         AgregarButton.Text = "Añadir"
         DNIText.Text = ""
         ContraseñaText.Text = ""
-        PuestoText.Text = ""
+        PuestoCombo.SelectedValue = 0
         NombreText.Text = ""
         ApellidosText.Text = ""
         AntiguedadText.Text = ""

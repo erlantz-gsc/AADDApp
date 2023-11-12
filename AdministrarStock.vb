@@ -36,7 +36,7 @@ Public Class AdministrarStock
                 ProductoText.Text = resultados(0)
                 CantidadText.Text = resultados(1)
                 PrecioText.Text = resultados(2)
-                cantidad = 0
+                cantidad = ParseCantidad()
             End If
         End If
     End Sub
@@ -51,26 +51,27 @@ Public Class AdministrarStock
 
     Private Sub Sumar1_Click(sender As Object, e As EventArgs) Handles Sumar1.Click
         cantidad += 1
-        CantidadText.Text = ParseCantidad() + cantidad
+        CantidadText.Text = cantidad
     End Sub
 
     Private Sub Sumar10_Click(sender As Object, e As EventArgs) Handles Sumar10.Click
         cantidad += 10
-        CantidadText.Text = ParseCantidad() + cantidad
+        CantidadText.Text = cantidad
     End Sub
 
     Private Sub Restar1_Click(sender As Object, e As EventArgs) Handles Restar1.Click
         If cantidad > 1 Then
             cantidad -= 1
+            CantidadText.Text = cantidad
         Else
             MessageBox.Show("El valor actual no es un número válido.")
         End If
-        CantidadText.Text = ParseCantidad() + cantidad
     End Sub
 
     Private Sub Restar10_Click(sender As Object, e As EventArgs) Handles Restar10.Click
         If cantidad > 10 Then
             cantidad -= 10
+            CantidadText.Text = cantidad
         Else
             MessageBox.Show("El valor actual no es un número válido.")
         End If

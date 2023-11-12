@@ -31,7 +31,6 @@ Partial Class AdministrarEmpleados
         Me.Label5 = New System.Windows.Forms.Label()
         Me.DniLabel = New System.Windows.Forms.Label()
         Me.ContraseñaLabel = New System.Windows.Forms.Label()
-        Me.PuestoText = New System.Windows.Forms.TextBox()
         Me.NombreText = New System.Windows.Forms.TextBox()
         Me.ApellidosText = New System.Windows.Forms.TextBox()
         Me.AntiguedadText = New System.Windows.Forms.TextBox()
@@ -41,6 +40,7 @@ Partial Class AdministrarEmpleados
         Me.AgregarButton = New System.Windows.Forms.Button()
         Me.ResetButton = New System.Windows.Forms.Button()
         Me.DespedirButton = New System.Windows.Forms.Button()
+        Me.PuestoCombo = New System.Windows.Forms.ComboBox()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -133,15 +133,6 @@ Partial Class AdministrarEmpleados
         Me.ContraseñaLabel.TabIndex = 7
         Me.ContraseñaLabel.Text = "Contraseña"
         '
-        'PuestoText
-        '
-        Me.PuestoText.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.PuestoText.Location = New System.Drawing.Point(39, 56)
-        Me.PuestoText.Multiline = True
-        Me.PuestoText.Name = "PuestoText"
-        Me.PuestoText.Size = New System.Drawing.Size(164, 32)
-        Me.PuestoText.TabIndex = 8
-        '
         'NombreText
         '
         Me.NombreText.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -233,12 +224,21 @@ Partial Class AdministrarEmpleados
         Me.DespedirButton.UseVisualStyleBackColor = False
         Me.DespedirButton.Visible = False
         '
+        'PuestoCombo
+        '
+        Me.PuestoCombo.FormattingEnabled = True
+        Me.PuestoCombo.Location = New System.Drawing.Point(41, 58)
+        Me.PuestoCombo.Name = "PuestoCombo"
+        Me.PuestoCombo.Size = New System.Drawing.Size(161, 24)
+        Me.PuestoCombo.TabIndex = 18
+        '
         'AdministrarEmpleados
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(105, Byte), Integer), CType(CType(124, Byte), Integer), CType(CType(142, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1479, 568)
+        Me.Controls.Add(Me.PuestoCombo)
         Me.Controls.Add(Me.DespedirButton)
         Me.Controls.Add(Me.ResetButton)
         Me.Controls.Add(Me.AgregarButton)
@@ -248,7 +248,6 @@ Partial Class AdministrarEmpleados
         Me.Controls.Add(Me.AntiguedadText)
         Me.Controls.Add(Me.ApellidosText)
         Me.Controls.Add(Me.NombreText)
-        Me.Controls.Add(Me.PuestoText)
         Me.Controls.Add(Me.ContraseñaLabel)
         Me.Controls.Add(Me.DniLabel)
         Me.Controls.Add(Me.Label5)
@@ -277,7 +276,6 @@ Partial Class AdministrarEmpleados
     Friend WithEvents Label5 As Label
     Friend WithEvents DniLabel As Label
     Friend WithEvents ContraseñaLabel As Label
-    Friend WithEvents PuestoText As TextBox
     Friend WithEvents NombreText As TextBox
     Friend WithEvents ApellidosText As TextBox
     Friend WithEvents AntiguedadText As TextBox
@@ -287,4 +285,5 @@ Partial Class AdministrarEmpleados
     Friend WithEvents AgregarButton As Button
     Friend WithEvents ResetButton As Button
     Friend WithEvents DespedirButton As Button
+    Friend WithEvents PuestoCombo As ComboBox
 End Class

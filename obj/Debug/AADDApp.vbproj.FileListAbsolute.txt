@@ -39,3 +39,6 @@ E:\AA_RETO_1\AADDApp\obj\Debug\AADDApp.pdb
 E:\AA_RETO_1\AADDApp\bin\Debug\aa\AADDApp.resources.dll
 E:\AA_RETO_1\AADDApp\obj\Debug\AADDApp.Login.aa.resources
 E:\AA_RETO_1\AADDApp\obj\Debug\aa\AADDApp.resources.dll
+C:\Users\Erlantz\Desktop\Reto\AADD\AADDApp\AADDApp\bin\Debug\aa\AADDApp.resources.dll
+C:\Users\Erlantz\Desktop\Reto\AADD\AADDApp\AADDApp\obj\Debug\AADDApp.Login.aa.resources
+C:\Users\Erlantz\Desktop\Reto\AADD\AADDApp\AADDApp\obj\Debug\aa\AADDApp.resources.dll
