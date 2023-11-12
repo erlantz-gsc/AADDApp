@@ -85,34 +85,6 @@ Public Class AppGridElementos
         End If
     End Sub
 
-    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
-        ' Verifica si se hizo clic en una celda de la columna de Cantidad (ajusta el nombre de la columna según tu configuración)
-        If e.ColumnIndex = DataGridView1.Columns("Cantidad").Index AndAlso e.RowIndex >= 0 Then
-            Dim cantidad As Integer = Convert.ToInt32(DataGridView1.Rows(e.RowIndex).Cells("Cantidad").Value)
-
-            ' Si la cantidad es mayor que 0, resta uno; de lo contrario, elimina la fila
-            If cantidad > 0 Then
-                cantidad -= 1
-                DataGridView1.Rows(e.RowIndex).Cells("Cantidad").Value = cantidad
-
-                ' Actualiza el precio total restando el precio del artículo
-                Dim precio As Decimal = Convert.ToDecimal(DataGridView1.Rows(e.RowIndex).Cells("Precio").Value)
-                Dim totalPrecio As Decimal = Convert.ToDecimal(Label1.Text.Replace("Total Precio: ", "").Replace("€", ""))
-                totalPrecio -= precio
-                Label1.Text = "Total Precio: " & totalPrecio.ToString("C") ' Formatea el total como moneda
-
-                ' Si la cantidad llega a 0, elimina la fila
-                If cantidad = 0 Then
-                    DataGridView1.Rows.RemoveAt(e.RowIndex)
-                End If
-                For Each btn As Button In FlowLayoutPanel1.Controls
-                    Dim dataRow As DataRow = DirectCast(btn.Tag, DataRow)
-                    Dim stock As Integer = Convert.ToInt32(dataRow("STOCK"))
-                    btn.Visible = (cantidad < stock)
-                Next
-            End If
-        End If
-    End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         ' Agrega los artículos del DataGridView a la lista articulos en AppMenuTerminar
@@ -144,5 +116,36 @@ Public Class AppGridElementos
         Me.Close()
     End Sub
 
+    Private Sub DataGridView1_CellContentClick_1(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+        ' Verifica si se hizo clic en una celda de la columna de Cantidad (ajusta el nombre de la columna según tu configuración)
+        If e.ColumnIndex = DataGridView1.Columns("Cantidad").Index AndAlso e.RowIndex >= 0 Then
+            Dim cantidad As Integer = Convert.ToInt32(DataGridView1.Rows(e.RowIndex).Cells("Cantidad").Value)
 
+            ' Si la cantidad es mayor que 0, resta uno; de lo contrario, elimina la fila
+            If cantidad > 0 Then
+                cantidad -= 1
+                DataGridView1.Rows(e.RowIndex).Cells("Cantidad").Value = cantidad
+                ' Calcula el precio total
+                Dim totalPrecio As Decimal = 0
+                For Each row As DataGridViewRow In DataGridView1.Rows
+                    If row.Cells("Precio").Value IsNot Nothing AndAlso IsNumeric(row.Cells("Precio").Value) Then
+                        totalPrecio += Convert.ToDecimal(row.Cells("Precio").Value) * Convert.ToInt32(row.Cells("Cantidad").Value)
+                    End If
+                Next
+
+                ' Muestra el total en Label1
+                Label1.Text = "TOTAL PRECIO: " & totalPrecio.ToString("C") ' Formatea el total como moneda
+
+                ' Si la cantidad llega a 0, elimina la fila
+                If cantidad = 0 Then
+                    DataGridView1.Rows.RemoveAt(e.RowIndex)
+                End If
+                For Each btn As Button In FlowLayoutPanel1.Controls
+                    Dim dataRow As DataRow = DirectCast(btn.Tag, DataRow)
+                    Dim stock As Integer = Convert.ToInt32(dataRow("STOCK"))
+                    btn.Visible = (cantidad < stock)
+                Next
+            End If
+        End If
+    End Sub
 End Class

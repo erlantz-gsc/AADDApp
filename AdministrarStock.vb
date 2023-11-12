@@ -25,21 +25,6 @@ Public Class AdministrarStock
         End Try
     End Sub
 
-    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
-        If e.RowIndex >= 0 And e.ColumnIndex >= 0 Then
-            ' Obten el valor de la celda en la columna "DNI" (o la columna que corresponda).
-            Cod_Producto = DataGridView1.Rows(e.RowIndex).Cells("COD_ARTICULO").Value.ToString()
-            Dim resultados As List(Of String) = Login.EjecutarConsulta("select  COD_ARTICULO, STOCK, PRECIO from Articulos where COD_ARTICULO = '" & Cod_Producto & "'", "SELECT", True)
-
-            If resultados.Count > 0 Then
-                ' Suponiendo que los datos se encuentran en un orden específico en la lista (por ejemplo, DNI, Contraseña, Puesto, Nombre, Apellidos, Antigüedad y Número de Seguridad Social):
-                ProductoText.Text = resultados(0)
-                CantidadText.Text = resultados(1)
-                PrecioText.Text = resultados(2)
-                cantidad = ParseCantidad()
-            End If
-        End If
-    End Sub
     Private Function ParseCantidad() As Integer
         Dim cantidad As Integer
         If Integer.TryParse(CantidadText.Text, cantidad) Then
@@ -91,5 +76,21 @@ Public Class AdministrarStock
 
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
 
+    End Sub
+
+    Private Sub DataGridView1_CellContentClick_1(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+        If e.RowIndex >= 0 And e.ColumnIndex >= 0 Then
+            ' Obten el valor de la celda en la columna "DNI" (o la columna que corresponda).
+            Cod_Producto = DataGridView1.Rows(e.RowIndex).Cells("COD_ARTICULO").Value.ToString()
+            Dim resultados As List(Of String) = Login.EjecutarConsulta("select  COD_ARTICULO, STOCK, PRECIO from Articulos where COD_ARTICULO = '" & Cod_Producto & "'", "SELECT", True)
+
+            If resultados.Count > 0 Then
+                ' Suponiendo que los datos se encuentran en un orden específico en la lista (por ejemplo, DNI, Contraseña, Puesto, Nombre, Apellidos, Antigüedad y Número de Seguridad Social):
+                ProductoText.Text = resultados(0)
+                CantidadText.Text = resultados(1)
+                PrecioText.Text = resultados(2)
+                cantidad = ParseCantidad()
+            End If
+        End If
     End Sub
 End Class

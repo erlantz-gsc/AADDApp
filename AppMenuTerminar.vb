@@ -32,4 +32,6 @@ Public Class AppMenuTerminar
         ' Muestra la suma total en el Label.
         Label2.Text = "Total Precio: " & totalPrecio.ToString("C")
     End Sub
+
+
 End Class
