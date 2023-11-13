@@ -28,7 +28,11 @@
                 nuevoArticulo.Precio = 20
                 AppComandaMenu.articulos.Add(nuevoArticulo)
             End If
-
+            If (AppComandaMenu.articulos.LongCount <> 0) Then
+                AppComandaMenu.Button4.Visible = True
+            Else
+                AppComandaMenu.Button4.Visible = False
+            End If
             Me.Close()
         Else
             MessageBox.Show("Alguno de los GroupBox no tiene un RadioButton seleccionado.")

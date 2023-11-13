@@ -49,8 +49,10 @@ Public Class AdministrarEmpleados
                 ContraseñaText.Text = row("CONTRASEÑA").ToString()
                 If row("Puesto").ToString() = "Camarero" Then
                     PuestoCombo.SelectedIndex = 0
+                    PuestoCombo.Enabled = True
                 ElseIf row("Puesto").ToString() = "Gerente" Then
                     PuestoCombo.SelectedIndex = 1
+                    PuestoCombo.Enabled = False
                 End If
                 NombreText.Text = row("NOMBRE").ToString()
                 ApellidosText.Text = row("APELLIDOS").ToString()
@@ -63,11 +65,11 @@ Public Class AdministrarEmpleados
     Private Sub AgregarButton_Click(sender As Object, e As EventArgs) Handles AgregarButton.Click
         If String.IsNullOrWhiteSpace(DNI) Then
             ' DNI está vacío, realiza una inserción
-            Dim sqlInsert As String = "INSERT INTO empleados (DNI, PUESTO, NOMBRE, APELLIDOS, ANTIGUEDAD, N_SEGURIDAD_SOCIAL, CONTRASEÑA) VALUES ('" & DNIText.Text & "', '" & PuestoCombo.SelectedText & "', '" & NombreText.Text & "', '" & ApellidosText.Text & "', '" & AntiguedadText.Text & "', '" & NSeguridadSocialText.Text & "', '" & ContraseñaText.Text & "')"
+            Dim sqlInsert As String = "INSERT INTO empleados (DNI, PUESTO, NOMBRE, APELLIDOS, ANTIGUEDAD, N_SEGURIDAD_SOCIAL, CONTRASEÑA) VALUES ('" & DNIText.Text & "', '" & PuestoCombo.SelectedValue & "', '" & NombreText.Text & "', '" & ApellidosText.Text & "', '" & AntiguedadText.Text & "', '" & NSeguridadSocialText.Text & "', '" & ContraseñaText.Text & "')"
             Login.EjecutarConsulta(sqlInsert, "INSERT")
         Else
             ' DNI no está vacío, realiza una actualización
-            Dim sqlUpdate As String = "UPDATE empleados SET DNI = '" & DNIText.Text & "', PUESTO = '" & PuestoCombo.SelectedText & "', NOMBRE = '" & NombreText.Text & "', APELLIDOS = '" & ApellidosText.Text & "', ANTIGUEDAD = '" & AntiguedadText.Text & "', N_SEGURIDAD_SOCIAL = '" & NSeguridadSocialText.Text & "', CONTRASEÑA = '" & ContraseñaText.Text & "' WHERE DNI = '" & DNI & "'"
+            Dim sqlUpdate As String = "UPDATE empleados SET DNI = '" & DNIText.Text & "', PUESTO = '" & PuestoCombo.SelectedValue & "', NOMBRE = '" & NombreText.Text & "', APELLIDOS = '" & ApellidosText.Text & "', ANTIGUEDAD = " & Integer.Parse(AntiguedadText.Text) & ", N_SEGURIDAD_SOCIAL = '" & NSeguridadSocialText.Text & "', CONTRASEÑA = '" & ContraseñaText.Text & "' WHERE DNI = '" & DNI & "'"
             Login.EjecutarConsulta(sqlUpdate, "UPDATE")
         End If
         Reset()
@@ -98,6 +100,7 @@ Public Class AdministrarEmpleados
         DNIText.Text = ""
         ContraseñaText.Text = ""
         PuestoCombo.SelectedIndex = 0
+        PuestoCombo.Enabled = True
         NombreText.Text = ""
         ApellidosText.Text = ""
         AntiguedadText.Text = ""

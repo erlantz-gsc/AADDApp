@@ -132,6 +132,11 @@ Public Class AppGridElementos
 
         ' Cierra el formulario AppGridElementos
         Me.Close()
+        If (AppComandaMenu.articulos.LongCount <> 0) Then
+            AppComandaMenu.Button4.Visible = True
+        Else
+            AppComandaMenu.Button4.Visible = False
+        End If
     End Sub
 
     Private Sub DataGridView1_CellContentClick_1(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
