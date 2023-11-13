@@ -37,6 +37,24 @@ Public Class AppGridElementos
         DataGridView1.Columns.Add("Nombre", "Nombre")
         DataGridView1.Columns.Add("Cantidad", "Cantidad")
         DataGridView1.Columns.Add("Precio", "Precio")
+
+        Dim articulosFiltrados = AppComandaMenu.articulos.Where(Function(a) a.Tipo = elemento AndAlso a.Stock > 0).ToList()
+
+        ' Llena el DataGridView con los artículos filtrados
+        For Each articulo As Articulo In articulosFiltrados
+            DataGridView1.Rows.Add(articulo.Codigo, articulo.Nombre, 1, articulo.Precio)
+        Next
+
+        ' Calcula el precio total
+        Dim totalPrecio As Decimal = 0
+        For Each row As DataGridViewRow In DataGridView1.Rows
+            If row.Cells("Precio").Value IsNot Nothing AndAlso IsNumeric(row.Cells("Precio").Value) Then
+                totalPrecio += Convert.ToDecimal(row.Cells("Precio").Value) * Convert.ToInt32(row.Cells("Cantidad").Value)
+            End If
+        Next
+
+        ' Muestra el total en Label1
+        Label1.Text = "TOTAL PRECIO: " & totalPrecio.ToString("C") ' Formatea el total como moneda
     End Sub
 
     Private Sub BotonArticulo_Click(sender As Object, e As EventArgs)

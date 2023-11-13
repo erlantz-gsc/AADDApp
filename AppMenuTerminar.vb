@@ -10,7 +10,11 @@ Public Class AppMenuTerminar
         For Each articulo As Articulo In AppComandaMenu.articulos
             Dim sqlArticuloInsert As String = "INSERT INTO ARTICULOS_COMANDAS (COD_ARTICULO, COD_COMANDA, CANTIDAD) VALUES ('" & articulo.Codigo & "', '" & cod_comanda & "', '" & articulo.Stock & "')"
             Login.EjecutarConsulta(sqlArticuloInsert, "INSERT")
+            Dim sqlUpdate As String = "UPDATE Articulos SET STOCK = STOCK - " & articulo.Stock & " WHERE COD_ARTICULO = '" & articulo.Codigo & "'"
+            Login.EjecutarConsulta(sqlUpdate, "UPDATE")
         Next
+        AppComandaMenu.articulos.Clear()
+
         Me.Close()
     End Sub
 

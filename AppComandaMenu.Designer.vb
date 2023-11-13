@@ -76,6 +76,7 @@ Partial Class AppComandaMenu
         Me.Button4.TabIndex = 3
         Me.Button4.Text = "FINALIZAR COMANDA"
         Me.Button4.UseVisualStyleBackColor = False
+        Me.Button4.Visible = False
         '
         'AppComandaMenu
         '
